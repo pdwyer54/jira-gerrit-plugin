@@ -90,8 +90,10 @@ public class GerritConfigurationImpl implements GerritConfiguration {
     }
 
     @Override
-    public String getSshHostname() {
-        return (String) settings.get(FIELD_SSH_HOSTNAME);
+    public String[] getSshHostname() {
+        String hostName = (String) settings.get(FIELD_SSH_HOSTNAME);
+        String[] hostNameArray = hostName.split(";");
+        return hostNameArray;
     }
 
     @Override
@@ -102,6 +104,13 @@ public class GerritConfigurationImpl implements GerritConfiguration {
     @Override
     public int getSshPort() {
         String port = (String) settings.get(FIELD_SSH_PORT);
+        String[] portArray = port.split(";");
+        int[] portArrayInt = new int[portArray.length];
+        for (int i=0; i<portArrayInt.length; i++){
+            portArrayInt[i] = Integer.parseInt(port);
+        }
+
+
         return port == null ? DEFAULT_SSH_PORT : Integer.parseInt(port);
     }
 
@@ -122,8 +131,10 @@ public class GerritConfigurationImpl implements GerritConfiguration {
     }
 
     @Override
-    public String getSshUsername() {
-        return (String) settings.get(FIELD_SSH_USERNAME);
+    public String[] getSshUsername() {
+        String userName = (String) settings.get(FIELD_SSH_USERNAME);
+        String[] userNameArray =  userName.split(";");
+        return userNameArray;
     }
 
     @Override

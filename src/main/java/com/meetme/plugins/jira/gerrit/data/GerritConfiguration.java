@@ -49,13 +49,13 @@ public interface GerritConfiguration {
 
     String getProjectSearchQuery();
 
-    String getSshHostname();
+    String[] getSshHostname();
 
     int getSshPort();
 
     File getSshPrivateKey();
 
-    String getSshUsername();
+    String[] getSshUsername();
 
     boolean getShowsEmptyPanel();
 
